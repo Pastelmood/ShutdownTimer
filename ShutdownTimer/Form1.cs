@@ -21,12 +21,15 @@ namespace ShutdownTimer
             addItem(12, comboBox_Hour);
 
             // Minute Item
-            addItem(59, comboBox_Minute);
+            addItem(59, comboBox_Minute, 5);
+
+            // Change dateTimePicker to TimePicker
+            setTimeController();
         }
 
-        private void addItem(int number, ComboBox comboBox)
+        private void addItem(int number, ComboBox comboBox, int step = 1)
         {           
-            for (int i = 0; i <= number; i++)
+            for (int i = 0; i <= number; i+= step)
             {
                 ComboboxItem item = new ComboboxItem();
                 item.Text = i.ToString();
@@ -35,6 +38,12 @@ namespace ShutdownTimer
                 comboBox.Items.Add(item);
             }
             comboBox.SelectedIndex = 0;
+        }
+
+        private void setTimeController()
+        {
+            dateTimePicker_Time.Format = DateTimePickerFormat.Time;
+            dateTimePicker_Time.ShowUpDown = true;
         }
 
         private void shutdownTimer()
@@ -68,6 +77,30 @@ namespace ShutdownTimer
             startInfo.Arguments = "/a";
             process.StartInfo = startInfo;
             process.Start();
+        }
+
+        private void setShutdownTimerAtTime(DateTime dateFuture)
+        {
+            DateTime dateNow = DateTime.Now;
+            int totalSecond = Convert.ToInt32(dateFuture.Subtract(dateNow).TotalSeconds);
+
+            if (totalSecond < 60)
+            {
+                totalSecond = 60;
+            }
+
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "shutdown.exe";
+            startInfo.Arguments = "/s /f /t " + @totalSecond;
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void button_ShutdownAtTime_Click(object sender, EventArgs e)
+        {
+            setShutdownTimerAtTime(dateTimePicker_Time.Value);
         }
     }
 

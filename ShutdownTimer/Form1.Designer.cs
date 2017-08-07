@@ -34,6 +34,8 @@
             this.comboBox_Minute = new System.Windows.Forms.ComboBox();
             this.button_Shutdown = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
+            this.dateTimePicker_Time = new System.Windows.Forms.DateTimePicker();
+            this.button_ShutdownAtTime = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -94,11 +96,31 @@
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
+            // dateTimePicker_Time
+            // 
+            this.dateTimePicker_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.dateTimePicker_Time.Location = new System.Drawing.Point(40, 164);
+            this.dateTimePicker_Time.Name = "dateTimePicker_Time";
+            this.dateTimePicker_Time.Size = new System.Drawing.Size(178, 26);
+            this.dateTimePicker_Time.TabIndex = 6;
+            // 
+            // button_ShutdownAtTime
+            // 
+            this.button_ShutdownAtTime.Location = new System.Drawing.Point(251, 155);
+            this.button_ShutdownAtTime.Name = "button_ShutdownAtTime";
+            this.button_ShutdownAtTime.Size = new System.Drawing.Size(75, 44);
+            this.button_ShutdownAtTime.TabIndex = 7;
+            this.button_ShutdownAtTime.Text = "Shutdown";
+            this.button_ShutdownAtTime.UseVisualStyleBackColor = true;
+            this.button_ShutdownAtTime.Click += new System.EventHandler(this.button_ShutdownAtTime_Click);
+            // 
             // Form_Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 139);
+            this.ClientSize = new System.Drawing.Size(338, 212);
+            this.Controls.Add(this.button_ShutdownAtTime);
+            this.Controls.Add(this.dateTimePicker_Time);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Shutdown);
             this.Controls.Add(this.comboBox_Minute);
@@ -123,6 +145,8 @@
         private System.Windows.Forms.ComboBox comboBox_Minute;
         private System.Windows.Forms.Button button_Shutdown;
         private System.Windows.Forms.Button button_Cancel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_Time;
+        private System.Windows.Forms.Button button_ShutdownAtTime;
     }
 }
 
